@@ -3,23 +3,88 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI trophy checklist</title>
+<title>Leonida Trophy Guide — GTA VI · all 55 PS5 trophies</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>GTA VI trophy checklist</h1>
-  <p id="progress">0 of 55 earned</p>
+<header class="masthead">
+  <div class="masthead-text">
+    <p class="kicker">Grand Theft Auto VI · PlayStation 5 · unofficial fan guide</p>
+    <h1>Leonida Trophy Guide</h1>
+    <p class="lede">Every one of the 55 official trophies — name, description and grade exactly as PlayStation publishes them, a guide in our own words with its sources, a roadmap to the Platinum, and a tracker that saves in your browser. Works offline; it loads nothing from the network.</p>
+  </div>
+  <div class="progress-card" id="progressCard" aria-label="Progress">
+    <p class="progress-count"><span id="earnedCount">0</span> / <span id="totalCount">55</span> earned</p>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    <p class="progress-pct" id="progressPct">0% to the Platinum</p>
+    <p class="progress-grades" id="progressGrades"></p>
+  </div>
 </header>
-<div class="controls">
-  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
-  <button id="export" type="button">Export progress</button>
-  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
-</div>
-<table>
-  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
-  <tbody id="rows"></tbody>
-</table>
+
+<nav class="views" aria-label="Views">
+  <button type="button" class="view-tab is-active" data-view="checklist">Checklist</button>
+  <button type="button" class="view-tab" data-view="roadmap">Roadmap to the Platinum</button>
+  <button type="button" class="view-tab" data-view="missables">Missables</button>
+</nav>
+
+<section id="view-checklist" class="view is-active">
+  <div class="toolbar">
+    <label class="tool search">Search
+      <input id="search" type="search" placeholder="Name, description or guide…" autocomplete="off">
+    </label>
+    <label class="tool">Kind
+      <select id="kindFilter">
+        <option value="all">All kinds</option>
+        <option value="story">Story</option>
+        <option value="missable">Missable</option>
+        <option value="collectibles">Collectibles</option>
+        <option value="activities">Activities</option>
+        <option value="online">Online</option>
+      </select>
+    </label>
+    <label class="tool">Grade
+      <select id="gradeFilter">
+        <option value="all">All grades</option>
+        <option value="platinum">Platinum</option>
+        <option value="gold">Gold</option>
+        <option value="silver">Silver</option>
+        <option value="bronze">Bronze</option>
+      </select>
+    </label>
+    <label class="tool check"><input id="hideEarned" type="checkbox"> Hide earned</label>
+    <label class="tool check"><input id="spoilerToggle" type="checkbox"> Spoiler-safe: hide un-earned story trophies</label>
+    <button id="exportBtn" type="button">Export progress</button>
+    <label class="import-btn">Import progress
+      <input id="importFile" type="file" accept="application/json,.json">
+    </label>
+  </div>
+  <p class="list-meta" id="listMeta"></p>
+  <div class="layout">
+    <ol class="trophy-list" id="trophyList"></ol>
+    <aside class="detail" id="detail" aria-live="polite"></aside>
+  </div>
+</section>
+
+<section id="view-roadmap" class="view">
+  <p class="view-intro">The order to earn them in, built from the official descriptions: story first, then side characters, then the map, then races and shooting, then robberies, then money and the 100% push. PowerPyx rates the whole run about 200 hours at difficulty 4/10, with the story alone taking 50–60 hours.</p>
+  <div id="roadmapStages"></div>
+</section>
+
+<section id="view-missables" class="view">
+  <p class="view-intro">Only one trophy is flagged as possibly missable by any published guide. Everything else can be earned after the story, in free roam — but a manual save before a final mission costs nothing, so the habit below is worth keeping.</p>
+  <div id="missableList"></div>
+  <div class="missable-advice">
+    <h2>The save habit</h2>
+    <p>Story missions cannot be replayed, so keep a manual save before any mission that looks like a one-off — especially the final mission of a side character's strand (Andy, Kenton, Billy, Randy, Tyrone) and the vague story moments (Personal Best, Actions Speak Louder, Bad Luck, I Guess, The Truth Is Out There). The game gives you 15 manual save slots; use them. No other trophy is confirmed missable by any published guide.</p>
+    <p class="sources-note">Basis: PowerPyx and GTABase flag Positive Mental Attitude (via FullSweep and GTA Zone); GTAViceCityHub reports no missable trophy confirmed and notes the 15 manual save slots.</p>
+  </div>
+</section>
+
+<footer>
+  <p>Unofficial fan guide. Not affiliated with Rockstar Games, Take-Two Interactive or PlayStation. Trophy names and descriptions are shown exactly as PlayStation publishes them; every guide is written for this page in its own words and cites its sources. No game art, logos or screenshots are used. All 55 trophies are single-player and offline — there are no online trophies.</p>
+  <p>Sources for the official list: <a href="https://www.exophase.com/game/grand-theft-auto-vi-psn/trophies/">Exophase</a> · <a href="https://psnprofiles.com/trophies/43531-grand-theft-auto-vi">PSNProfiles</a> · roadmap and counts: <a href="https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap">Push Square</a> · <a href="https://gta-zone.com/news/gta-6-trophies-achievements/">GTA Zone</a> · <a href="https://fullsweepmap.com/wiki/gta6-trophies/">FullSweep</a> · <a href="https://www.ofzenandcomputing.com/gta-6-trophy-list-trophies-achievements/">Of Zen and Computing</a></p>
+</footer>
+
 <script type="module" src="app.js"></script>
 </body>
 </html>
